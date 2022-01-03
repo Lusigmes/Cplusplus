@@ -4,7 +4,7 @@ using namespace std;
 
 void merge(int *array,int ini,int meio,int fim){
 	int *aux,tam,i,j,k,pE,pD;
-	int fim1=0,fim2=0;
+	bool fim1=false,fim2=false;
 	tam = fim-ini+1;
 	pE = ini;
 	pD = meio+1;
@@ -16,10 +16,10 @@ void merge(int *array,int ini,int meio,int fim){
 					aux[i] = array[pE++];
 				else
 					aux[i] = array[pD++];
-			if(pE>meio) 
-				fim1=1;
-			if(pD>fim)
-				fim2=1;	
+				if(pE>meio) 
+					fim1=true;
+				if(pD>fim)
+					fim2=true;	
 			}else{
 				if(!fim1)
 					aux[i] = array[pE++];
