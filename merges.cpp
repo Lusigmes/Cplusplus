@@ -4,24 +4,24 @@ using namespace std;
 
 void merge(int *array,int ini,int meio,int fim){
 	int *aux,tam,i,j,k,pE,pD;
-	bool fim1=false,fim2=false;
+	bool fim1=true,fim2=true;
 	tam = fim-ini+1;
 	pE = ini;
 	pD = meio+1;
 	aux = (int *) malloc(tam*sizeof(int));
 	if(aux != NULL){
 		for(i=0;i<tam;i++){
-			if(!fim1 && !fim2){
+			if(fim1 && fim2){
 				if(array[pE] > array[pD])
 					aux[i] = array[pE++];
 				else
 					aux[i] = array[pD++];
 				if(pE>meio) 
-					fim1=true;
+					fim1=false;
 				if(pD>fim)
-					fim2=true;	
+					fim2=false;	
 			}else{
-				if(!fim1)
+				if(fim1)
 					aux[i] = array[pE++];
 				else
 					aux[i] = array[pD++];
