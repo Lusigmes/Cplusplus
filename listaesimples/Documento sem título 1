@@ -1,0 +1,140 @@
+#include <iostream>
+using namespace std;
+
+class Node{
+private:
+    int valor;
+    Node* proximo;
+public:
+    Node(int value){
+        this->valor = value;
+        this->proximo = NULL;
+    }
+    int getValor(){
+        return valor;
+    }
+    Node* getProximo(){
+        return proximo;
+    }
+    void setProximo(Node* prox){
+        proximo = prox;
+    }
+};
+
+class List{
+private:
+    Node* cabeca;
+    Node* cauda;
+public:
+    List(){
+        cabeca = NULL;
+        cauda = NULL;
+    }
+    List(int value){
+        cabeca = new Node(value);
+        cauda = cabeca;
+    }
+    ~List(){
+        delete cabeca;
+    }
+    bool isEmpty(){
+        return (cabeca == NULL);
+    }
+
+    void printList(){
+        cout << "Elementos da lista :\n";
+        if(isEmpty()) 
+            cout << "Vazio\n";
+        Node* aux = cabeca;
+        while(aux){
+            cout << aux->getValor() << std::endl;
+            aux = aux->getProximo();
+        }
+        cout <<std::endl;
+    }
+
+    void addFirst(int value){
+        Node* novo = new Node(value);
+        novo->setProximo(cabeca);
+        cabeca = novo;
+    }
+    void addLast(int value){
+        Node* novo = new Node(value);
+        if(isEmpty()){
+            cabeca = novo;
+            cauda = novo;
+        }else{
+            cauda->setProximo(novo);
+            cauda = novo; 
+        }
+    }
+
+    int sizeLst(){
+        if(isEmpty()) 
+            return 0;
+        Node* aux = cabeca;
+        int tam=0;
+        while(aux){ // do while?
+            aux = aux->getProximo();
+            tam++;
+        }
+        return tam;
+    }
+
+    bool buscarLst(int value){
+        Node* aux = cabeca;
+        if(isEmpty()) cout << "Vazio\n";
+        while(aux){
+            if(aux->getValor() == value)
+                return true;
+            aux = aux->getProximo();
+        }
+        return false;
+    }
+
+    void removeLast(){
+        Node* aux = cabeca;
+        if(isEmpty()) cout << "Vazio\n";
+        if(cabeca->getProximo() == NULL)
+            cabeca = NULL;
+        else if(cabeca->getProximo()->getProximo() == NULL)
+            cabeca->setProximo(NULL);
+        else{
+            Node* ant_ant = cabeca;
+            Node* ant = cabeca->getProximo();
+            Node* corrente = cabeca->getProximo()->getProximo();
+
+            while(corrente){
+                Node* aux = ant;
+                ant = corrente;
+                ant_ant = aux;
+                corrente = corrente->getProximo();
+            }
+            delete ant_ant->getProximo();
+            ant_ant->setProximo(NULL);
+            cauda = ant_ant;  
+        } 
+    }
+
+
+
+
+
+
+
+};
+int main(){
+    List l;
+    cout << l.buscarLst(12);
+    l.addLast(2);
+    l.addLast(3);
+    l.addLast(5);
+    l.addFirst(12);
+   if(!l.isEmpty())
+        l.printList();
+    cout << l.buscarLst(12);
+
+
+
+    return 0;
+}
