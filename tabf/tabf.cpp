@@ -94,9 +94,6 @@ void ftabPrint(){
     cout<<endl;
 }
 
-
-
-
 int main(int argc, char** argv){
    
     char filename[] = "mamaco.txt";
