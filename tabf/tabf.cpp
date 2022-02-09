@@ -13,8 +13,6 @@ vector<pair<mychar,myint>> tab;
 char caract;
 vector<char> caracter;
 
-
-
 void bubbleSort(){
     pair<myint,mychar> aux;
     for(int i=0; i<(int)tab.size(); i++){
@@ -50,7 +48,6 @@ void ftabConstructor(const char* filename){
         while( (caract = fgetc(aqv)) != EOF )
             caracter.push_back(caract);
         fclose(aqv);
-
     }
     
     //calcular a frequencia
@@ -59,15 +56,12 @@ void ftabConstructor(const char* filename){
     for(int i=0; i<(int)caracter.size(); i++){
         freq = getFreq(caracter,caracter[i]);
         tab.push_back(make_pair(caracter[i],freq));
-    }
-
-    //cout << freq;
-
+    }//cout << freq;
+    
     //remover caracteres repetidos
     bool flag = true;
     while(flag){
         int cont_=0;
-
         for(int k=0; k<(int)tab.size(); k++){
             for(int l = k+1; l<(int)tab.size(); l++){
                 if(tab[k] == tab[l]){
@@ -78,17 +72,12 @@ void ftabConstructor(const char* filename){
         for(int i=0; i<(int)tab.size(); i++){
             for(int j=i+1; j<(int)tab.size(); j++){
                 if(tab[i] == tab[j])
-                    cont_++;
+                     cont_++;
             }
         }
-
-
-
-
         if(cont_ < 1)
             flag = false;
-    }
-    
+    } 
     bubbleSort();
 }
 
