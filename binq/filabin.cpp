@@ -76,17 +76,17 @@ void separarEsomar(const char* valor){
             case 1:
                 soma += (pow(2,6));
             case 2:
-                soma += (pow(2,5)); break;
+                soma += (pow(2,5)); 
             case 3:
-                soma += (pow(2,4)); break;
+                soma += (pow(2,4)); 
             case 4:
-                soma += (pow(2,3)); break;
+                soma += (pow(2,3)); 
             case 5: 
-                soma += (pow(2,2)); break;
+                soma += (pow(2,2)); 
             case 6:
-                soma += (pow(2,1)); break;
+                soma += (pow(2,1)); 
             case 7:
-                soma += (pow(2,0)); break;
+                soma += (pow(2,0)); 
                           
             }
         }
@@ -98,7 +98,7 @@ void separarEsomar(const char* valor){
         cout << "NUU\n";
     else{
       
-        cout << "Valor: " << (soma) << " corresponde ao caractere: " << (char)(soma) << " adicionado ao mamaco.txt!" << endl;
+        cout << "Valor: " << soma << " corresponde ao caractere: " << (char)(soma) << " adicionado ao mamaco.txt!" << endl;
         //cout << "Valor: " << (soma+'0') << " corresponde ao caractere: " << (char)(soma+'0') << " adicionado ao mamaco.txt!" << endl;    
         fputc((soma),fout);
         fclose(fout);
